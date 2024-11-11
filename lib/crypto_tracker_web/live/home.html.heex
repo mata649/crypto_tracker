@@ -1,0 +1,11 @@
+<div class="bg-slate-50 pt-8 px-2 pb-8 rounded-xl">
+  <h1 class="text-2xl font-bold">Track Cryptocurrencies</h1>
+  <div id="coins" phx-update="stream">
+    <p :for={{id, coin} <- @streams.coins} id={id} class="ml-2">
+      <%= String.capitalize(coin.id) %> : <%= Float.round(coin.price, 4) %>
+    </p>
+  </div>
+  <.simple_form for={%{}} id="search_form" phx-submit="search_crypto">
+    <.input type="text" name="crypto_name" value="" label="Crypto" />
+  </.simple_form>
+</div>
